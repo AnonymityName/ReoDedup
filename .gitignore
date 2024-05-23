@@ -1,0 +1,17 @@
+bin/
+build/
+
+build/*
+bin/*
+
+build/src
+build/src/*
+
+conf/*
+ceph/*
+
+output/
+output/*
+
+.vscode/
+.vscode/*
