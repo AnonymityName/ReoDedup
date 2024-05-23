@@ -1,12 +1,12 @@
-# FaDedup
+# ReoDedup
 
-Here is the source code of FaDedup, which is a prototype system designed for distributed primary storage systems coupled with local deduplication. 
+Here is the source code of ReoDedup, which is a prototype system designed for distributed primary storage systems coupled with local deduplication. 
 
-Next you will see the instructions for installing and runnig FaDedup.
+Next you will see the instructions for installing and runnig ReoDedup.
 
 ## Installation
 
-We developed FaDedup on Ubuntu 20.04. 
+We developed ReoDedup on Ubuntu 20.04. 
 
 ### Ceph
 
@@ -217,7 +217,7 @@ cp /usr/local/lib/libcrypto.a /usr/lib
 
 ## Compile
 
-After preparing the development environment above, we can compile FaDedup via `cmake` easily.
+After preparing the development environment above, we can compile ReoDedup via `cmake` easily.
 
 ```shell
 mkdir build
@@ -246,14 +246,14 @@ The file describes the system configuration info. The keys and values are sepera
 | agents_ip           | The IP addresses of all nodes, including the local node. Addressses are seperated by a whitespace. |
 | packet_size         | A file will first be split into coarse-grained packets. Packet_size is the size of packets in bytes. |
 | agent_worker_number | Each agent has multiple workers which can response the users' requests in parallel. Agent_worker_number represents the number of workers. |
-| read_thread_num     | The number of read requests that FaDedup can handle in parallel. |
+| read_thread_num     | The number of read requests that ReoDedup can handle in parallel. |
 | chunk_avg_size      | The average size of chunks.                                  |
 | chunk_algorithm     | The chunking algorithm.                                      |
 | hash_algorithm      | The fingerprinting algorithm.                                |
 | container_size      | The number of chunks read or written per I/O                 |
 | super_chunk_size    | The number of chunks within a superchunk.                    |
-| write_mode          | The mode used when writing data.There are eight write mode can be chosen: `Normal`, `NormalMulti`, `SelectiveDedup`, `SelectiveDedupMulti`, `SuperChunk`, `SuperChunkMulti`,  `BatchPush`, `BatchPushMulti`.                                                |
-| update_mode         | The mode used when updating data. There are two update mode can be chosen: `Normal`, `Remap`.                                                       |
+| write_mode          | The mode used when writing data.There are eight write mode can be chosen: `Normal`, `NormalMulti`, `SelectiveDedup`, `SelectiveDedupMulti`, `SuperChunk`, `SuperChunkMulti`,  `BatchPush`, `BatchPushMulti`. |
+| update_mode         | The mode used when updating data. There are two update mode can be chosen: `Normal`, `Remap`. |
 
 ## Run
 
@@ -268,7 +268,7 @@ bash script/start_agents.sh
 
 ### Write
 
-FaDedup supports six write modes which can be configured in *conf/sys.conf*.(i) `Normal`, means normal write strategy; (ii) `SelectiveDedup`, means writing with FSR strategy; (iii) `BatchPush` means writing with batch strategy; (iv) `SuperChunk` means writing with superchunk strategy; (v) `*Multi` means writing files in parallel with corresponding strategy. 
+ReoDedup supports six write modes which can be configured in *conf/sys.conf*.(i) `Normal`, means normal write strategy; (ii) `SelectiveDedup`, means writing with FSR strategy; (iii) `BatchPush` means writing with batch strategy; (iv) `SuperChunk` means writing with superchunk strategy; (v) `*Multi` means writing files in parallel with corresponding strategy. 
 
 After `DPAgent` has been successfully started on all nodes, run `DPClient` on a node to perform write operations.
 
